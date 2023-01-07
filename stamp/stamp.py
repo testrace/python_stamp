@@ -1,5 +1,4 @@
 import sys
-import time
 
 from selenium import webdriver
 from selenium.common import TimeoutException
@@ -8,12 +7,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-start = time.time()  # 시작 시간 저장
-
 
 def exception_exit(wd: webdriver, message):
     print(message)
-    print("fail time :", time.time() - start)
     wd.quit()
     sys.exit(1)
 
@@ -92,6 +88,5 @@ try:
 except TimeoutException:
     print("출석 실패")
 finally:
-    print("time :", time.time() - start)
     driver.quit()
     sys.exit()
